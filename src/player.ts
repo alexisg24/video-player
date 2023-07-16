@@ -71,6 +71,8 @@ export class MediaPlayer implements VideoPlayer {
 
         stopBtn.addEventListener("click", ()=>{
             this.stop();
+            pauseBtn.style.display = 'none'
+            playBtn.style.display = 'inline-block'
         });
 
         muteBtn.addEventListener('click', ()=>{
@@ -121,6 +123,11 @@ export class MediaPlayer implements VideoPlayer {
 
             progressBar.value = this.video.currentTime / this.video.duration;
             timeDisplay.textContent = `${whereYouAt} / ${this.videoDurationFormated}`;
+
+            if(whereYouAt === this.videoDurationFormated){
+                pauseBtn.style.display = 'none'
+                playBtn.style.display = 'inline-block'
+            }
         });
     }
 }
